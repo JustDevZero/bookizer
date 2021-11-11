@@ -74,7 +74,7 @@ jobs:
         push-branch: 'main'
         commit-message: 'Increated version automatically'
         force-add: 'true'
-        files: VERSION setup.cfg bookizer/__init__.py
+        files: VERSION setup.cfg bookizer/__init__.py bookizer/VERSION
         name: ${{ steps.get_name.outputs.OUTPUT }}
         email: ${{ steps.get_email.outputs.OUTPUT }}
 
