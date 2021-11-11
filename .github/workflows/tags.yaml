@@ -86,10 +86,8 @@ jobs:
         custom_tag: ${{ steps.bumped_version.outputs.OUTPUT }}
 
     - name: Create a GitHub release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: "marvinpinto/action-automatic-releases@latest"
       with:
-        tag_name: ${{ steps.bumped_version.outputs.OUTPUT }}
-        release_name: Release ${{ steps.bumped_version.outputs.OUTPUT }}
-        body: New version released ${{ steps.bumped_version.outputs.OUTPUT }}
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
