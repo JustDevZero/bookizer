@@ -25,9 +25,8 @@ jobs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
-        ls /tmp &&
-        wget -q https://gist.githubusercontent.com/JustDevZero/1c02427031b3a58c2bcd2db715c38c14/raw/fb736bf82dab1186da3f9585b6b7c67b6c921db4/autoguess.py &&
-        OUTPUT=$(python autoguess.py) &&
+        pwd &&
+        OUTPUT=$(python /tmp/autoguess.py) &&
         echo "::set-output name=OUTPUT::$OUTPUT"
 
     - name: Get email
