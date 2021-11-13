@@ -22,11 +22,11 @@ jobs:
 
     - name: Analyze versions
       id: version_analysis
+      container: justdevzero/builder-image:latest
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: |
-        pwd &&
-        OUTPUT=$(python /tmp/autoguess.py) &&
+        OUTPUT=$(python /usr/src/autoguess.py) &&
         echo "::set-output name=OUTPUT::$OUTPUT"
 
     - name: Get email
@@ -54,6 +54,7 @@ jobs:
 
     - name: Bump Version
       id: bumped_version
+      container: justdevzero/builder-image:latest
       env:
         OUTPUT: ${{ steps.version_analysis.outputs.OUTPUT }}
         GITHUB_CONTEXT: ${{ toJson(github) }}
